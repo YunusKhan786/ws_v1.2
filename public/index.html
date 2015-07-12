@@ -1,0 +1,196 @@
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="scotchTodo">
+<head>
+	<!-- META -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+	<title>New Millenium Pvt Ltd</title>
+	
+	<div class="jumbotron text-center">
+			<h1>HIBERNATION HOME PRODUCTIONS INC.<span class="label label-info">{{ todos.length }}</span></h1>
+		</div>
+
+	<!-- SCROLLS -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+	<!-- MetisMenu CSS -->
+<link href="http://ironsummitmedia.github.io/startbootstrap-sb-admin-2/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+<!-- Timeline CSS -->
+<link href="http://ironsummitmedia.github.io/startbootstrap-sb-admin-2/dist/css/timeline.css" rel="stylesheet">
+<!-- Custom CSS -->
+<link href="http://ironsummitmedia.github.io/startbootstrap-sb-admin-2/dist/css/sb-admin-2.css" rel="stylesheet">
+<!-- Morris Charts CSS -->
+<link href="http://ironsummitmedia.github.io/startbootstrap-sb-admin-2/bower_components/morrisjs/morris.css" rel="stylesheet">
+<!-- Custom Fonts -->
+<link href="http://ironsummitmedia.github.io/startbootstrap-sb-admin-2/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<style>
+		html 					{ overflow-y:scroll; }
+		body 					{ padding-top:50px; }
+		#todo-list 				{ margin-bottom:30px; }
+		#todo-form 	 			{ margin-bottom:50px; }
+	</style>
+
+	<!-- SPELLS -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+
+	<script src="js/controllers/main.js"></script> <!-- load up our controller -->
+	<script src="js/services/todos.js"></script> <!-- load our todo service -->
+	<script src="js/core.js"></script> <!-- load our main application -->
+
+</head>
+<!-- SET THE CONTROLLER -->
+<body ng-controller="mainController">
+	<div class="container">
+
+		<!-- HEADER AND TODO COUNT -->
+		<div class= "text-center page-header">
+			<h1 >We offer Services as you like !!! <span class="label label-info"></span></h1>
+		</div>
+		<div class="form-group">
+            <label>Checkboxes</label>
+            <div class="checkbox" ng-model="selectedValues">
+                <label>
+                    <input type="checkbox" ng-model="checkboxModel.value1">Plumbing
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-model="checkboxModel.value2">Pest Control
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-model="checkboxModel.value3">Gardening
+                </label>
+            </div>
+        </div>    
+        
+		<!-- FORM TO CREATE TODOS -->
+		<div id="todo-form" class="row panel-body panel-heading" >
+			<div class="col-sm-8 col-sm-offset-2 text-center">
+				<form>
+					<div class="form-group">
+					<label>Please Select one or more service</label>
+	                <select multiple class="form-control" ng-model="selectedValues">
+	                    <option value="1">Plumbing</option>
+	                    <option value="2">Pest Control</option>                            
+	                    <option value="3">Gardening</option>                            
+	                    <option value="4">Grocery Delivery</option>                            
+	                    <option value="5">Electrical</option>                                                        
+	                    <option value="6">Routine Inspection</option> 
+	                </select> 	                
+                    </div>                                        
+
+						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+					<div class="form-group">
+
+						<label> Name </label> 
+						<input type="text" class="form-control input-lg text-center "  ng-model="formData.name">
+					</div>
+					
+					<div class="col-lg-8 col-lg-offset-2"><label> Email </label> </div>
+					<div class="form-group">
+
+						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+						<input type="text" class="form-control input-lg text-center"  ng-model="formData.email">
+					</div>
+					<div class="col-lg-8 col-lg-offset-2"><label> Mobile # </label> </div>
+					<div class="form-group">
+
+						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+						<input type="text" class="form-control input-lg text-center"  ng-model="formData.mobile">
+					</div>
+					<div class="col-lg-8 col-lg-offset-2"><label> Alternate NO # </label> </div>
+					<div class="form-group">
+
+						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+						<input type="text" class="form-control input-lg text-center"  ng-model="formData.phone_no">
+					</div>
+					<div class="col-lg-8 col-lg-offset-2"><label> ADDRESS  </label> </div>
+					<div class="col-lg-8 col-lg-offset-2"><label> House / Flat # </label></div>
+					<div class="form-group">
+
+						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+						<input type="text" class="form-control input-lg text-center"  ng-model="formData.house_no">
+					</div>
+					<div class="col-lg-8 col-lg-offset-2"><label> Street </label> </div>
+					<div class="form-group">
+
+						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+						<input type="text" class="form-control input-lg text-center"  ng-model="formData.street">
+					</div>
+					<div class="col-lg-8 col-lg-offset-2"><label> Area </label> </div>
+					<div class="form-group">
+
+						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+						<input type="text" class="form-control input-lg text-center"  ng-model="formData.area">
+					</div>
+					<div class="col-lg-8 col-lg-offset-2"><label> Town / City </label> </div>
+					<div class="form-group">
+
+						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+						<input type="text" class="form-control input-lg text-center"  ng-model="formData.city">
+					</div>
+					<div class="col-lg-8 col-lg-offset-2"><label> Country </label> </div>
+					<div class="form-group">
+
+						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+						<input type="text" class="form-control input-lg text-center"  ng-model="formData.country">
+					</div>
+					<div class="col-lg-8 col-lg-offset-2"><label> Pin </label> </div>
+					<div class="form-group">
+
+						<!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+						<input type="text" class="form-control input-lg text-center"  ng-model="formData.pincode">
+					</div>
+
+
+					<!-- createToDo() WILL CREATE NEW TODOS -->
+					<button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
+				</form>
+			</div>
+		</div>
+
+		<!-- TODO LIST -->
+		<div id="todo-list" class="row">
+			<div class="col-sm-4 col-sm-offset-4">
+
+				
+
+				<!-- LOOP OVER THE TODOS IN $scope.todos -->
+				<div class="checkbox" ng-repeat="todo in todos">
+					<label>
+						<input type="checkbox" ng-click="deleteTodo(todo._id)"> 
+						NAME : {{ todo.name }} <br>		
+						EMAIL :	{{ todo.email }}<br>	
+						MOBILE #: {{ todo.mobile }}<br>
+						ALTERNATE NO # : {{ todo.phone_no }}<br>						
+						SELECTED : {{todo.selectedValues}} <br><br>
+						HOUSE NO # : {{ todo.house_no }} <br>
+						STREET : {{ todo.street }}<br>
+						AREA : {{ todo.area }}<br>
+						TOWN / CITY : {{ todo.city }}<br>
+						COUNTRY : {{ todo.country }}<br>
+						PIN : {{ todo.pincode }}<br>
+						SELECTED SERVICES
+						{{ todo.workitem1 }},
+						{{ todo.workitem2 }},
+						{{ todo.workitem3 }}						
+					</label>
+				</div>
+
+				<p class="text-center" ng-show="loading">
+					<span class="fa fa-spinner fa-spin fa-3x"></span>
+				</p>
+
+			</div>
+		</div>
+
+
+
+	</div>
+
+</body>
+</html>
